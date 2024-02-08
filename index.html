@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Search</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.search-container button {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 0 24px 24px 0;
+    cursor: pointer;
+}
+
+/* Responsive design */
+@media screen and (min-width: 600px) {
+    .search-container input[type="text"] {
+        width: 300px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search on YouTube" onkeypress="handleKeyPress(event)">
+        <button onclick="searchYouTube()">Search</button>
+    </div>
+</div>
+
+<script>
+function searchYouTube() {
+    var searchKeyword = document.getElementById("searchInput").value;
+    if (searchKeyword.trim() !== "") {
+        var searchUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(searchKeyword);
+        window.location.href = searchUrl;
+    } else {
+        alert("Please enter a search keyword.");
+    }
+}
+
+function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+        searchYouTube();
+    }
+}
+</script>
+
+</body>
+</html>
